@@ -49,6 +49,7 @@ export const informaDadosCliente = () => {
     cy.getElementAndClick(el.aceitoReceberComunicacoesEssentia);
 
     cy.getElementAndClick(el.aoAssinarConcordaPoliticaPrivacidade);
+    // cy.pause();
 
     cy.getElementAndClick(el.avancarProximaTela);
 

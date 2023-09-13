@@ -85,7 +85,7 @@ export const confirmaProduto = (item?: string, motivoRemocao?: MotivoRemocaoProd
         cy.url().should('not.eq', 'http://192.168.0.66:9420/etapa-confirma-produtos')
     }
     else {
-
+        // cy.pause();
         cy.getElementAndClick(el.avancarProximaTela);
 
         cy.url().should('not.eq', 'http://192.168.0.66:9420/etapa-confirma-produtos')

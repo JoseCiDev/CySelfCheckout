@@ -137,6 +137,7 @@ export const informaDadosEntrega = (
     selecionarEnderecoPorIndice(el.endereços, enderecoSelecionado);
 
     selecionarFormaEnvio(el.formaEnvio, formaEnvio);
+    // cy.pause();
 
     cy.getElementAndClick(el.avancarProximaTela);
 

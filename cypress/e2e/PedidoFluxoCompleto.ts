@@ -60,15 +60,13 @@ describe('e2e SelfCheckout - Cliente faz pedido.', () => {
 
     })
 
-    $arr = ["NAO_VOU_UTILIZAR","BOLETO","TESTE"];
 
-    for($a = 0; $a < 3; $a++){
 
         it("Deve realizar pedidos. EM orçamento, remover 1 fórmula quando houver 1 ou mais, informar motivo Não vou utilizar. Em endereço, selecionar endereço já cadastrado e forma de envio sedex. Em resumo, selecionar forma de pagamento Boleto.", () => {
             formaPagamentoSelecionada = FormaPagamento.BOLETO;
             realizaPedido({
                 item: '1',
-                motivoRemocao: MotivoRemocaoProduto.$arr[$a],
+                motivoRemocao: MotivoRemocaoProduto,
                 textoMotivoRemocaoOutro: undefined,
                 quantidadeEnderecosCadastrados: 0,
                 enderecoSelecionado: 0,
@@ -78,7 +76,7 @@ describe('e2e SelfCheckout - Cliente faz pedido.', () => {
             });
         });
 
-    }
+    
 
     fixtures.forEach((fixture, index) => {
         it("Deve realizar pedidos. EM orçamento, remover 1 fórmula quando houver 1 ou mais, informar motivo Não vou utilizar. Em endereço, selecionar endereço já cadastrado e forma de envio sedex. Em resumo, selecionar forma de pagamento Boleto.", () => {

@@ -23,6 +23,7 @@ export const informarFormaPagamento = (formaPagamentoSelecionada): void => {
     cy.get(el.formaPagamento, { timeout: 20000 })
         .find(`input[type="radio"][data-cy="${formaPagamentoSelecionada}"]`)
         .check({ force: true });
+        // cy.pause();
 };
 
 
@@ -34,6 +35,7 @@ export const resumoPedidoInformaFormaPagamento = (formaPagamentoSelecionada): vo
     cy.getElementAndClick(el.expandirDetalhesOrcamento);
 
     informarFormaPagamento(formaPagamentoSelecionada);
+    
 }
 
 
