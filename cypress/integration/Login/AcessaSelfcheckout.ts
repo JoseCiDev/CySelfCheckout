@@ -1,14 +1,14 @@
 /// <reference types="cypress" />
 
 import { ELEMENTS as el } from '../../elements'
+import { dadosParametros } from '../../DadosParametros'
 
 
-
-const fixtures = require('../../fixtures/acessoSelfcheckout.json');
 
 
 
 export const acessarSelfcheckout = () => {
+    const fixtures = dadosParametros.fixtures;
 
     fixtures.forEach((fixture, index) => {
         it(`Realiza e2e SelfCheckout ${index + 1}`, () => {

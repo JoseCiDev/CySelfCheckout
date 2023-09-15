@@ -5,11 +5,6 @@ import { mount } from 'cypress/react'
 // load the 3rd party command definition
 /// <reference types="cypress-wait-until" />
 
-import { MotivoRemocaoProduto , Uf } from '../support/commands'
-
-
-
-
 
 
 
@@ -19,6 +14,7 @@ declare global {
     interface Chainable<Subject = any> {
       mount: typeof mount
 
+      
       /**
        * comando customizado de login.
        * @example cy.loginSm('user', 'password','baseUrl')
@@ -59,14 +55,14 @@ declare global {
        * comando customizado de login.
        * @example cy.selecionarRadioOptionByValue(el.elemento)
        */
-      getRadioOptionByValue(dataCy: string, value: MotivoRemocaoProdutoOrcamento): Chainable<Element>
+      getRadioOptionByValue(dataCy: string, value: any): Chainable<Element>
       
 
       /**
        * comando customizado de login.
        * @example cy.selecionarRadioOptionByValue(el.elemento)
        */
-      getSelectOptionByValue(dataCy: string, value: Uf): Chainable<Element>
+      getSelectOptionByValue(dataCy: string, value: any): Chainable<Element>
       
     }
   }

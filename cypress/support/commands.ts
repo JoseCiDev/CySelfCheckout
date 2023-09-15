@@ -28,66 +28,7 @@
 
 import { ELEMENTS as el } from '../elements'
 
-export type Options =
-    MotivoRemocaoProduto
-    | Uf
-    | FormaPagamento
-    | FormaEnvio
 
-
-export enum MotivoRemocaoProduto {
-    NAO_VOU_UTILIZAR = 0,
-    JA_COMPREI = 1,
-    VALOR = 2,
-    PREFIRO_NAO_INFORMAR = 3,
-    OUTRO = "",
-}
-
-export enum FormaPagamento {
-    BOLETO = 'boleto-radio-button',
-    CARTAO = 'cartao-radio-button',
-    PIX = 'pix-radio-button',
-}
-
-
-
-export enum FormaEnvio {
-    MOTOBOY = "8",
-    RETIRADA_LOJA = "7",
-    SEDEX = "15",
-}
-
-
-
-export enum Uf {
-    AC = "AC",
-    AL = "AL",
-    AP = "AP",
-    AM = "AM",
-    BA = "BA",
-    CE = "CE",
-    DF = "DF",
-    ES = "ES",
-    GO = "GO",
-    MA = "MA",
-    MT = "MT",
-    MS = "MS",
-    MG = "MG",
-    PA = "PA",
-    PB = "PB",
-    PR = "PR",
-    PE = "PE",
-    PI = "PI",
-    RJ = "RJ",
-    RN = "RN",
-    RS = "RS",
-    RO = "RO",
-    RR = "RR",
-    SC = "SC",
-    SP = "SP",
-    SE = "SE",
-    TO = "TO",
-}
 
 
 
@@ -130,6 +71,7 @@ Cypress.Commands.add('loginSc', (index: number, element: string, continuar: stri
     cy.fixture('acessoSelfcheckout.json').then((dados) => {
         const link = dados[index].link;
         const senha = dados[index].senha;
+
         cy.visit(link)
         cy.get(element, { timeout: 10000 })
             .should('be.visible')
@@ -141,16 +83,15 @@ Cypress.Commands.add('loginSc', (index: number, element: string, continuar: stri
         cy.get(continuar, { timeout: 20000 })
             .should('be.visible')
             .click()
-        cy.wait(1000)
     })
-
-
 });
 
 
 
 Cypress.Commands.add('getElementAndClick', (element: string): void => {
     cy.get(element, { timeout: 10000 })
+        .should('be.visible')
+        .as('element')
         .then($elements => {
             if ($elements.length > 0) {
                 cy.wrap($elements.first())
@@ -185,7 +126,7 @@ Cypress.Commands.add('getElementAndType', (element: string, text?: string): void
 
 
 
-Cypress.Commands.add('getRadioOptionByValue', (dataCy: string, value: Options): void => {
+Cypress.Commands.add('getRadioOptionByValue', (dataCy: string, value): void => {
     cy.get(`[data-cy="${dataCy}"]`, { timeout: 10000 })
         .should('be.visible')
         .find(`input[type="radio"][value="${value}"]`)
@@ -194,7 +135,7 @@ Cypress.Commands.add('getRadioOptionByValue', (dataCy: string, value: Options): 
 
 
 
-Cypress.Commands.add('getSelectOptionByValue', (dataCy: string, value: Options) => {
+Cypress.Commands.add('getSelectOptionByValue', (dataCy: string, value) => {
     cy.get(`[data-cy="${dataCy}"]`, { timeout: 10000 })
         .should('be.visible')
         .select(value, { force: true })

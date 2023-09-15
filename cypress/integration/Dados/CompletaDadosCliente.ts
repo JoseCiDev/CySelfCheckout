@@ -1,61 +1,78 @@
 /// <reference types="cypress" />
 
 import { ELEMENTS as el } from '../../elements';
-import { Uf } from '../../support/commands';
 import { faker } from '@faker-js/faker';
 import * as fakerBr from 'faker-br';
 import { format } from 'date-fns';
-import { confirmaProduto } from '../Orcamento/ConfirmaProduto'
-import { MotivoRemocaoProduto } from '../../support/commands'
+import { acessarSelfcheckout } from '../Login/AcessaSelfcheckout'
+import { removeAdicionaProdutos } from '../Orcamento/removeAdicionaProdutos'
+import { dadosParametros } from '../../DadosParametros'
 
 
-const ambiente: string = Cypress.env('AMBIENTE');
-const dadosAmbiente: string = Cypress.env(ambiente);
 
-const nomeCompletoAleatorio: string = faker.person.fullName()
-const dataNascimentoAleatorio: Date = faker.date.birthdate();
-const dataNascimentoFormatada = format(dataNascimentoAleatorio, 'yyyy-MM-dd');
-const rgAleatorio: string = fakerBr.br.rg();
-const cpfAleatorio: string = fakerBr.br.cpf();
-const telefoneAleatorio: string = faker.phone.number('+48 9 #### ####') // '+48 9 9214 8670'
-const emailAleatorio: string = faker.internet.email({ provider: 'essentia.com.br', allowSpecialCharacters: true })
-
-const ufsArray = Object.values(Uf);
-const randomOptionUf = ufsArray[Math.floor(Math.random() * ufsArray.length)];
+export const informaUf = (element: string, randomOptionUf: string): void => {
+    cy.getElementAndClick(element,)
+        .click()
+    cy.getSelectOptionByValue('uf', randomOptionUf);
+}
 
 
-export const informaDadosCliente = () => {
-    cy.log('Etapa informa dados do cliente')
 
-    cy.getElementAndType(el.nomeCompleto, nomeCompletoAleatorio), { timeout: 10000 };
+export function informaDadosCliente() {
 
-    cy.getElementAndType(el.dataNascimento, dataNascimentoFormatada.toString());
+    cy.log('Etapa informar dados do cliente')
 
-    cy.getElementAndType(el.rg, rgAleatorio);
+    cy.request('http://192.168.0.66:9420/etapa-completa-dados').then((response) => {
+        expect(response.status).to.eq(200)
 
-    const selecionaUfDadosCliente = (element: string): void => {
-        cy.get(element)
-            .click()
-        cy.getSelectOptionByValue('uf', randomOptionUf);
-    }
-    selecionaUfDadosCliente(el.uf);
+        cy.get(el.nomeCompleto)
+            .clear()
+        cy.waitUntil(() =>
+            cy.get(el.nomeCompleto)
+                .type(dadosParametros.usuario.nomeCompleto),
+            {
+                errorMsg: 'Elemento não ficou visível a tempo.',
+                timeout: 50000, // Tempo máximo de espera em milissegundos (opcional)
+                interval: 500,  // Intervalo entre verificações em milissegundos (opcional)
+            }
+        );
 
-    cy.getElementAndType(el.telefone, telefoneAleatorio);
+        cy.getElementAndType(el.dataNascimento, dadosParametros.usuario.dataNascimentoFormatada.toString());
 
-    cy.getElementAndType(el.cpf, cpfAleatorio);
+        cy.get(el.rg)
+            .clear()
+        cy.getElementAndType(el.rg, dadosParametros.usuario.rg);
 
-    cy.getElementAndType(el.email, emailAleatorio);
+        informaUf(el.uf, dadosParametros.randomOptionUf);
 
-    cy.getElementAndClick(el.aceitoReceberComunicacoesEssentia);
+        cy.get(el.telefone)
+            .clear()
+        cy.getElementAndType(el.telefone, dadosParametros.usuario.telefone);
 
-    cy.getElementAndClick(el.aoAssinarConcordaPoliticaPrivacidade);
-    // cy.pause();
+        cy.get(el.cpf)
+            .clear()
+        cy.getElementAndType(el.cpf, dadosParametros.usuario.cpf);
 
-    cy.getElementAndClick(el.avancarProximaTela);
+        cy.get(el.email)
+            .clear()
+        cy.getElementAndType(el.email, dadosParametros.usuario.email);
 
-    cy.url().should('contain', 'http://192.168.0.66:9420/etapa-endereco');
+        cy.getElementAndClick(el.aceitoReceberComunicacoesEssentia);
+
+        cy.getElementAndClick(el.aoAssinarConcordaPoliticaPrivacidade);
+
+        cy.getElementAndClick(el.avancarProximaTela);
+
+        cy.url()
+            .should('contain', dadosParametros.url.etapaEndereco);
+
+    })
 
 }
+
+
+
+
 
 
 
@@ -68,11 +85,13 @@ describe('Etapa de confirmação de dados do cliente', () => {
         const index = 0;
         cy.loginSc(index, el.containerSenha, el.continuar);
 
-        confirmaProduto();
+        removeAdicionaProdutos();
     })
 
     it("Deve informar dados do cliente, preenchendo todos os campos", () => {
-        
+
+
         informaDadosCliente()
     })
 })
+

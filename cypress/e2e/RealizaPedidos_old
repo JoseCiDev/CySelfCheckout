@@ -1,0 +1,127 @@
+/// <reference types="cypress" />
+
+import { ELEMENTS as el } from '../elements';
+import { faker } from '@faker-js/faker';
+import * as fakerBr from 'faker-br';
+import { format } from 'date-fns';
+import { acessarSelfcheckout } from '../integration/Login/AcessaSelfcheckout'
+import { removeAdicionaProdutos } from '../integration/Orcamento/removeAdicionaProdutos'
+import { informaDadosCliente } from '../integration/Dados/CompletaDadosCliente'
+import { informaDadosEntrega } from '../integration/Entrega/InformaDadosEntrega'
+import { resumoPedidoInformaFormaPagamento } from '../integration/ResumoFormaPagamento/resumoPedidoFormaPagamento'
+import { dadosParametros } from '../DadosParametros'
+
+
+
+
+
+export const realizaPedido = () => {
+
+    //confirmaProdutosOrcamento
+    removeAdicionaProdutos();
+
+    // informarDadosClienteOrcamento()
+    informaDadosCliente();
+
+    // informarDadosEntrega()
+    informaDadosEntrega();
+
+    // informarFormaPagamento()
+    resumoPedidoInformaFormaPagamento();
+};
+
+
+
+export let formaPagamentoSelecionada;
+describe('e2e SelfCheckout - Cliente faz pedido.', () => {
+
+
+    before(() => {
+
+    })
+
+    beforeEach(() => {
+
+        const index = 0;
+        cy.loginSc(index, el.containerSenha, el.continuar);
+
+    })
+
+
+    const fixtures = dadosParametros.fixtures;
+
+
+    it.only("Deve realizar pedidos. EM orçamento, remover 1 fórmula quando houver 1 ou mais, informar motivo Não vou utilizar. Em endereço, selecionar endereço já cadastrado e forma de envio sedex. Em resumo, selecionar forma de pagamento Boleto.", () => {
+
+        realizaPedido();
+    });
+
+    it("Deve realizar pedidos. EM orçamento, remover 1 fórmula quando houver 1 ou mais, informar motivo Não vou utilizar. Em endereço, selecionar endereço já cadastrado e forma de envio sedex. Em resumo, selecionar forma de pagamento Boleto.", () => {
+        realizaPedido();
+    });
+
+    it("Deve realizar pedidos. EM orçamento, remover 1 fórmula quando houver 1 ou mais, informar motivo Não vou utilizar. Em endereço, selecionar endereço já cadastrado e forma de envio sedex. Em resumo, selecionar forma de pagamento Boleto.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Já comprei. Em endereço, selecionar endereço já cadastrado e forma de envio sedex. EM resumo, selecionar forma de pagamento Boleto.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Valor. Em endereço, selecionar endereço já cadastrado e forma de envio sedex. Em resumo, selecionar forma de pagamento Boleto.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Prefiro não informar. Em endereço, selecionar endereço já cadastrado e forma de envio sedex. Em resumo, selecionar forma de pagamento Boleto.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Outro. Em endereço, selecionar endereço já cadastrado e forma de envio sedex. Em resumo, selecionar forma de pagamento Boleto.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, não remover fórmulas. Em endereço, cadastrar novo endereço da região de florianópolis e selecionar forma de envio motoboy. Em resumo, selecionar forma de pagamento Cartão de crédito.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos. Em orçamento, remover 1 fórmula quando houver 1 ou mais, informar motivo Não vou utilizar. Em endereço, cadastrar novo endereço da região de florianópolis e selecionar forma de envio motoboy. Em resumo, selecionar forma de pagamento Cartão de crédito.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Já comprei. Em endereço, cadastrar novo endereço da região de florianópolis e selecionar forma de envio motoboy. Em resumo, selecionar forma de pagamento Cartão de crédito.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Valor. Em endereço, cadastrar novo endereço da região de florianópolis e selecionar forma de envio motoboy. Em resumo, selecionar forma de pagamento Cartão de crédito.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Prefiro não informar. Em endereço, cadastrar novo endereço da região de florianópolis e selecionar forma de envio motoboy. Em resumo, selecionar forma de pagamento Cartão de crédito.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Outro. Em endereço, cadastrar novo endereço da região de florianópolis e selecionar forma de envio motoboy. Em resumo, selecionar forma de pagamento Cartão de crédito.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos. EM orçamento, remover 1 fórmula quando houver 1 ou mais, informar motivo Não vou utilizar. Em endereço, cadastrar novo endereço  e selecionar forma de envio motoboy. Em resumo, selecionar forma de pagamento Pix.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Já comprei. Em endereço, cadastrar novo endereço  e selecionar forma de envio Retirada Loja. Em resumo, selecionar forma de pagamento Pix.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Valor. Em endereço, cadastrar novo endereço  e selecionar forma de envio Retirada Loja. Em resumo, selecionar forma de pagamento Pix.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Prefiro não informar. Em endereço, cadastrar novo endereço  e selecionar forma de envio Retirada Loja. Em resumo, selecionar forma de pagamento Pix.", () => {
+        realizaPedido();
+    })
+
+    it("Deve realizar pedidos, remover 1 fórmula quando houver 1 ou mais, informar motivo Outro. Em endereço, cadastrar novo endereço  e selecionar forma de envio Retirada loja. Em resumo, selecionar forma de pagamento Pix.", () => {
+        realizaPedido();
+    })
+
+});

@@ -1,5 +1,6 @@
 export const ELEMENTS = {
     avancarProximaTela:'[data-cy="next-step-button"]',
+    radiobutton:'input[type="radio"]',
     
     // LOGIN SM
     usuario: ':nth-child(1) > .form-control',
@@ -11,11 +12,14 @@ export const ELEMENTS = {
     continuar: '#login > div > div > div > form > div.buttons > button',
 
     // ORCAMENTO
-    modalSejaBemVindo: '#welcome-modal > .modal-dialog > .main-header > .container > .header-content > .outer-button > [data-cy="dismiss-modal"]',
+    modalSejaBemVindo: '#i-understood',
     naoApresentarModalSejaBemVindo: '#welcome-modal > .modal-dialog > .main-header > .container > .header-content > .outer-button > [data-cy="dismiss-modal"]',
-    removerFormulaOrcamento: '[data-cy="remove-formula-button"]',
+    blocoProdutos:'.bloco-manipulados',
+    removerProduto: '[data-cy="remove-formula-button"]',
     cancelarRemocaoFormulaOrcamento: '',
-    motivoRemocaoFormulaOrcamento: 'removal-formula-options-container',
+    blocoMotivoRemocaoProdutos:'[data-cy="removal-formula-options-container"]',
+    motivoRemocaoFormulaOrcamento: '#modal-remocao-formula',
+    campoTextoMotivoRemocaoOutro:'#outro-motivo',
     confirmarRemocaoProduto: '#remover',
     informarMesmoMotivoRemocaoTodasFormulas: '',
     adicionarProduto:'[data-cy="add-formula-button"]',
