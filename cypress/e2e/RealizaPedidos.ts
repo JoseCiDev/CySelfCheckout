@@ -4,7 +4,6 @@ import { ELEMENTS as el } from '../elements';
 import { faker } from '@faker-js/faker';
 import * as fakerBr from 'faker-br';
 import { format } from 'date-fns';
-import { acessarSelfcheckout } from '../integration/Login/AcessaSelfcheckout'
 import { removeAdicionaProdutos } from '../integration/Orcamento/removeAdicionaProdutos'
 import { informaDadosCliente } from '../integration/Dados/CompletaDadosCliente'
 import { informaDadosEntrega } from '../integration/Entrega/InformaDadosEntrega'
@@ -43,8 +42,7 @@ describe('e2e SelfCheckout - Cliente faz pedido.', () => {
 
 
     it('Deve realizar pedidos aleatórios', () => {
-        const numeroExecucoes: number = 10
-
+        const numeroExecucoes: number = 50
         for (let execucaoTeste = 1; execucaoTeste < numeroExecucoes; execucaoTeste++) {
             cy.log(`TESTE NÚMERO ${execucaoTeste}`)
             realizaPedido();

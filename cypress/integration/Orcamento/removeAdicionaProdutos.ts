@@ -2,7 +2,6 @@
 
 import 'cypress-wait-until';
 import { ELEMENTS as el } from '../../elements'
-import { acessarSelfcheckout } from '../Login/AcessaSelfcheckout'
 import { dadosParametros } from '../../DadosParametros'
 
 
@@ -61,7 +60,7 @@ export function removeAdicionaProdutos(): void {
     cy.wait(500);
     cy.getElementAndClick(el.modalSejaBemVindo);
 
-    if (dadosParametros.pedidoParams.item === undefined || dadosParametros.pedidoParams.item === '') {
+    if (dadosParametros.pedidoParams.item == undefined || dadosParametros.pedidoParams.item == '') {
         cy.getElementAndClick(el.avancarProximaTela);
         cy.url()
             .should('contain', dadosParametros.url.etapaCompletaDadosCliente);

@@ -11,10 +11,13 @@ import { mount } from 'cypress/react'
 
 declare global {
   namespace Cypress {
+    interface CypressEnv {
+      PROJECT_ID: string;
+    }
     interface Chainable<Subject = any> {
       mount: typeof mount
 
-      
+
       /**
        * comando customizado de login.
        * @example cy.loginSm('user', 'password','baseUrl')
@@ -44,26 +47,26 @@ declare global {
        * @example cy.getElementAndClick(el.elemento)
        */
       getElementAndClick(element: string): Chainable<Element>
-      
+
       /**
        * comando customizado de login.
        * @example cy.getElementAndClick(el.elemento)
        */
       getElementAndType(element: string, text?: string): Chainable<Element>
-      
+
       /**
        * comando customizado de login.
        * @example cy.selecionarRadioOptionByValue(el.elemento)
        */
       getRadioOptionByValue(dataCy: string, value: any): Chainable<Element>
-      
+
 
       /**
        * comando customizado de login.
        * @example cy.selecionarRadioOptionByValue(el.elemento)
        */
       getSelectOptionByValue(dataCy: string, value: any): Chainable<Element>
-      
+
     }
   }
 

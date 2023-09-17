@@ -1,6 +1,7 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
+  "projectId": "${PROJECT_ID}",
 
   includeShadowDom: true,
   defaultCommandTimeout: 10000,
@@ -12,7 +13,6 @@ export default defineConfig({
     redirectionLimit: 5000,
     viewportHeight: 1280,
     viewportWidth: 1024,
-    numTestsKeptInMemory:150
+    numTestsKeptInMemory: 150
   },
 });
-  
