@@ -1,7 +1,7 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
-  "projectId": "${PROJECT_ID}",
+  "projectId": "tx3tt6",
 
   includeShadowDom: true,
   defaultCommandTimeout: 10000,

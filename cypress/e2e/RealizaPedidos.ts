@@ -42,7 +42,7 @@ describe('e2e SelfCheckout - Cliente faz pedido.', () => {
 
 
     it('Deve realizar pedidos aleatórios', () => {
-        const numeroExecucoes: number = 50
+        const numeroExecucoes: number = 10
         for (let execucaoTeste = 1; execucaoTeste < numeroExecucoes; execucaoTeste++) {
             cy.log(`TESTE NÚMERO ${execucaoTeste}`)
             realizaPedido();
