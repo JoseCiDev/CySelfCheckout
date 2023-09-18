@@ -20,6 +20,7 @@ export const acessarSelfcheckout = () => {
     });
 }
 acessarSelfcheckout()
+//a
 
 
 
