@@ -1,18 +1,21 @@
 /// <reference types="cypress" />
 
-import {
-    elements as el,
-    faker,
-    fakerBr,
-} from '../import';
+import { elements as el } from '../elements'
+import { dadosParametros } from '../DadosParametros'
 
 
-import { removeAdicionaProdutos } from '../integration/Orcamento/removeAdicionaProdutos'
-import { informaDadosCliente } from '../integration/Dados/CompletaDadosCliente'
-import { informaDadosEntrega } from '../integration/Entrega/InformaDadosEntrega'
-import { resumoPedidoInformaFormaPagamento } from '../integration/ResumoFormaPagamento/resumoPedidoFormaPagamento'
-import { dadosParametros, getRandomValue } from '../DadosParametros'
+export const acessarSelfcheckout = () => {
+    const fixtures = dadosParametros.fixtures;
 
+    fixtures.forEach((fixture, index) => {
+        it(`Realiza e2e SelfCheckout ${index + 1}`, () => {
+            cy.log('Etapa de acesso ao Selfcheckout')
+
+            const index = 0;
+            cy.login(index, el.containerSenha, el.continuar);
+        });
+    });
+}
 
 
 
@@ -23,8 +26,11 @@ describe('LOG?', () => {
 
     });
 
+    
+
     it('Deve retornar log', () => {
         cy.log('teste')
+        acessarSelfcheckout()
     });
 
 });

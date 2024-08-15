@@ -11,8 +11,11 @@
 // import * as dateFns from 'date-fns';
 // export { dateFns };
 // export { format } from 'date-fns';
+//npm install date-fns --save
 
 // export { faker } from '@faker-js/faker';
+//npm install @faker-js/faker --save-dev
+
 
 // import { fakerBr } from '@js-brasil/fakerbr';
 // export { fakerBr };

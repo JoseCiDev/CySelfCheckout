@@ -1,11 +1,6 @@
-
-import {
-    faker,
-    fakerBr,
-    format
-} from './import';
-
-
+import { faker } from '@faker-js/faker';
+import { fakerBr } from '@js-brasil/fakerbr';
+import { format } from 'date-fns/format';
 
 interface DadosParametros {
     fixtures: any;
