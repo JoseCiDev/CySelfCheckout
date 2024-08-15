@@ -10,16 +10,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.1.2",
+    "@cypress/webpack-preprocessor": "^6.0.2",
     "@faker-js/faker": "^8.4.1",
     "@types/node": "^22.3.0",
     "cypress": "^13.13.3",
     "cypress-cucumber-preprocessor": "^4.3.1",
-    "@badeball/cypress-cucumber-preprocessor": "^20.1.2",
-    "@cypress/webpack-preprocessor": "^6.0.2",
     "ts-loader": "^9.5.1",
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@cypress/react": "^8.0.2",
+    "@js-brasil/fakerbr": "^0.0.2",
     "date-fns": "^3.6.0",
     "faker-br": "^0.4.1"
   }

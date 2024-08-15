@@ -17,8 +17,9 @@ export { faker } from '@faker-js/faker';
 
 import { fakerBr } from '@js-brasil/fakerbr';
 export { fakerBr };
+//npm i @js-brasil/fakerbr
 
-export { mount } from 'cypress/react';
+// export { mount } from 'cypress/react';
 
 import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
 export { addCucumberPreprocessorPlugin };

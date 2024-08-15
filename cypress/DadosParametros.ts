@@ -1,6 +1,9 @@
-import { faker } from '@faker-js/faker';
-import * as fakerBr from 'faker-br';
-import { format } from 'date-fns';
+
+import {
+    faker,
+    fakerBr,
+    format
+} from './import';
 
 
 
@@ -147,8 +150,8 @@ export const dadosParametros: DadosParametros = {
         nomeCompleto: faker.person.fullName(),
         dataNascimento: faker.date.birthdate(),
         dataNascimentoFormatada: format(dataNascimento, 'yyyy-MM-dd'),
-        rg: fakerBr.br.rg(),
-        cpf: fakerBr.br.cpf(),
+        rg: fakerBr.rg(),
+        cpf: fakerBr.cpf(),
         telefone: faker.phone.number('+48 9 #### ####'), // '+48 9 9214 8670'
         email: faker.internet.email({ provider: 'essentia.com.br', allowSpecialCharacters: true }),
     },
