@@ -1,6 +1,4 @@
-import {
-  defineConfig
-} from './cypress/import'
+import { defineConfig } from "cypress";
 
 export default defineConfig({
   "projectId": "tx3tt6",

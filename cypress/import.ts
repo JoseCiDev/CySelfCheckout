@@ -1,34 +1,33 @@
 ///home/jose/projetos/CySelfCheckout/cypress/import.tsimport * as loadash from 'lodash';
 
-import { defineConfig } from "cypress";
-export { defineConfig };
+
 //npm install typescript --save-dev
 
-import * as lodash from 'lodash';
-export { lodash };
+// import * as lodash from 'lodash';
+// export { lodash };
 //npm i -g npm
 //npm i --save lodash
 
-import * as dateFns from 'date-fns';
-export { dateFns };
-export { format } from 'date-fns';
+// import * as dateFns from 'date-fns';
+// export { dateFns };
+// export { format } from 'date-fns';
 
-export { faker } from '@faker-js/faker';
+// export { faker } from '@faker-js/faker';
 
-import { fakerBr } from '@js-brasil/fakerbr';
-export { fakerBr };
+// import { fakerBr } from '@js-brasil/fakerbr';
+// export { fakerBr };
 //npm i @js-brasil/fakerbr
 
 // export { mount } from 'cypress/react';
 
-import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
-export { addCucumberPreprocessorPlugin };
+// import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
+// export { addCucumberPreprocessorPlugin };
 
-import webpack from "@cypress/webpack-preprocessor";
-export { webpack };
+// import webpack from "@cypress/webpack-preprocessor";
+// export { webpack };
 
-import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-export { Given, When, Then };
+// import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
+// export { Given, When, Then };
 
 export { elements } from './elements';
 
