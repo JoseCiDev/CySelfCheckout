@@ -18,16 +18,16 @@ export { faker } from '@faker-js/faker';
 import { fakerBr } from '@js-brasil/fakerbr';
 export { fakerBr };
 
-// export { mount } from 'cypress/react';
+export { mount } from 'cypress/react';
 
-// import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
-// export { addCucumberPreprocessorPlugin };
+import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
+export { addCucumberPreprocessorPlugin };
 
-// import webpack from "@cypress/webpack-preprocessor";
-// export { webpack };
+import webpack from "@cypress/webpack-preprocessor";
+export { webpack };
 
-// import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-// export { Given, When, Then };
+import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
+export { Given, When, Then };
 
 export { elements } from './elements';
 
