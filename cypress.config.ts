@@ -8,6 +8,7 @@ export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
     },
+    baseUrl: 'http://192.168.0.66:9425',
     supportFile: 'cypress/support/e2e.{js,jsx,ts,tsx}',
     specPattern: 'cypress/**/*.{js,jsx,ts,tsx}',
     redirectionLimit: 5000,

@@ -1,14 +1,41 @@
 /// <reference path="../cypress.d.ts" />
 
+import {
+    ElementTypeAndValueOpcional,
+    ValidationResult,
+    ConditionalWrite,
+} from "../../DataParameters/Types/types";
 
-
-import './commandsLogin';
+import {
+    CheckAndThrowError,
+    ValidationConfig,
+    
+} from "../../DataParameters/Interfaces/interface";
 
 
 const environment = Cypress.env('AMBIENTE');
 const environmentData = Cypress.env(environment);
 
 
+Cypress.Commands.add('login', (index: number, element: string, access: string) => {
+    cy.fixture('acessoSelfcheckout.json').then((data) => {
+        const link = data[index].link;
+        const password = data[index].senha;
+
+        cy.visit(link)
+
+        cy.get(element, { timeout: 10000 })
+            .should('be.visible')
+            .each(($input, index) => {
+                const digit: string = password[index]
+                cy.wrap($input)
+                    .type(digit)
+            })
+        cy.get(access, { timeout: 20000 })
+            .should('be.visible')
+            .click()
+    })
+});
 
 Cypress.Commands.add('insertFile', (element, filePath): void => {
     cy.fixture(filePath, 'base64').then((fileContent) => {
@@ -128,27 +155,4 @@ Cypress.Commands.add('waitModalAndClick', (jqueryElement: string, element: strin
             .invoke('removeAttr', 'readonly' || 'hidden' || 'scroll' || 'auto', { force: true })
             .click({ force: true, multiple: true, timeout: 5000 });
     }
-});
-
-Cypress.Commands.add('checkRequiredField', (element: string, value: string, elementError: string, errorMessage = 'Este campo é obrigatório.') => {
-    cy.get(element)
-        .click()
-        .blur()
-        .then(() => {
-            const $elementError = Cypress.$(elementError);
-            if (!$elementError.is(':visible')) {
-                return cy.wrap({ error: "Erro! Hmm, não vejo a mensagem que deve ser apresentada ao usuário." });
-            }
-            if (value.length > 0) {
-                cy.get(element)
-                    .type(value)
-                    .then(() => {
-                        const $elementError = Cypress.$(elementError);
-                        if (value.length > 0 && $elementError.is(':visible') && $elementError.text() === errorMessage) {
-                            return cy.wrap({ error: "Erro! O campo está preenchido, porém a mensagem de obrigatoriedade é apresentada." });
-                        }
-                    });
-            }
-            return cy.wrap({ success: "Ok! Mensagem de campo obrigatório está funcionando como esperado." });
-        });
 });

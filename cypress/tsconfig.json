@@ -1,19 +1,26 @@
+
 {
     "compilerOptions": {
-        "esModuleInterop": true,
-        "moduleResolution": "Node",
-        "target": "es5",
-        "lib": [
-            "es5",
-            "dom"
-        ],
-        "types": [
-            "cypress",
-            "node"
-        ]
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "module": "commonjs",
+      "resolveJsonModule": true,
+      "skipLibCheck": true,
+      "target": "es6",
+      "lib": [
+        "es6",
+        "dom"
+      ],
+      "types": [
+        "cypress",
+        "node"
+      ]
     },
     "include": [
-        "**/*.ts",
-        "../cypress.d.ts"
+      "**/*.ts",
+      "./support/cypress.d.ts",
+      "cypress/**/*.json",
+      "cypress/support/**/*.ts",
+      "cypress/support/**/*.d.ts",
     ]
-}
+  }

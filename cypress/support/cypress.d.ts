@@ -10,24 +10,13 @@ import { mount } from 'cypress/react'
 
 declare global {
   namespace Cypress {
-    interface CypressEnv {
-      PROJECT_ID: string;
-    }
     interface Chainable<Subject = any> {
-      mount: typeof mount
-
-
-      /**
-       * comando customizado de login.
-       * @example cy.loginSm('user', 'password','baseUrl')
-       */
-      loginSm(user: string, senha: string, baseUrl: string): Chainable<Element>
 
       /**
        * comando customizado de login.
        * @example cy.login('user', 'password')
        */
-      loginSc(index: number, element: string, continuar: string): Chainable<Element>
+      login(index: number, element: string, continuar: string): Chainable<Element>
 
       /**
        * comando customizado para inserir arquivos.
@@ -42,29 +31,60 @@ declare global {
       getVisible(element: string, options?: Partial<Cypress.Loggable & Cypress.Timeoutable & Cypress.Withinable>): Chainable<Subject>;
 
       /**
-       * comando customizado de login.
-       * @example cy.getElementAndClick(el.elemento)
-       */
-      getElementAndClick(element: string): Chainable<Element>
+      * comando customizado para selecionar o elemento e clicar.
+      * @example cy.getElementAndClick(el.elemento)
+      */
+      getElementAndClick(elements: string[]): ValidationResult;
 
       /**
-       * comando customizado de login.
-       * @example cy.getElementAndClick(el.elemento)
-       */
-      getElementAndType(element: string, text?: string): Chainable<Element>
+     * comando customizado de login.
+     * @example cy.getElementAndClick(el.elemento)
+    */
+      getElementAndType(elements: { [key: string]: string }): ValidationResult
 
       /**
-       * comando customizado de login.
-       * @example cy.selecionarRadioOptionByValue(el.elemento)
-       */
-      getRadioOptionByValue(dataCy: string, value: any): Chainable<Element>
+      * comando customizado para selecionar a opcao radio.
+      * @example cy.getRadioOptionByValue(element,valor)
+      */
+      getRadioOptionByValue(elements: ElementTypeAndValueOpcional): ValidationResult
 
 
       /**
-       * comando customizado de login.
-       * @example cy.selecionarRadioOptionByValue(el.elemento)
-       */
-      getSelectOptionByValue(dataCy: string, value: any): Chainable<Element>
+     * comando customizado para selecionar opção do select.
+     * @example cy.getSelectOptionByValue(el.elemento)
+     */
+      getSelectOptionByValue(elements: ElementTypeAndValueOpcional): ValidationResult;
+
+      /**
+      * * comando customizado para guardar modal e clicar.
+      * @example cy.waitModalAndClick(orcamentista,atendente)
+      */
+      waitModalAndClick(jqueryElement: string, element: string): ValidationResult;
+
+      /**
+      * * comando customizado para selecionar elemento autocomplete apos digitar e capturar sugestão autocomplete clicando.
+      * @example cy.getElementAutocompleteTypeAndClick(orcamentista,atendente)
+      */
+      getElementAutocompleteTypeAndClick(elements: { [key: string]: string }, autocomplete: string): ValidationResult;
+
+      /**
+      * comando customizado para capturar elemento e marcar checkbox.
+      * @example cy.getElementAndCheck(el.elemento)
+      */
+      getElementAndCheck(elements: ElementTypeAndValueOpcional): ValidationResult;
+
+      /**
+      * comando customizado para ler arquivos
+      * @example cy.lerArquivo('orcamentoFilial.json')
+      */
+      readFileFromFixture(fileName: string): ValidationResult;
+
+      /**
+      * comando customizado para inserir arquivos.
+      * @example cy.insertFile('img/ReceitaJpeg(1).jpeg', el.importarImagem);
+      */
+      insertFile(element, filePath): ValidationResult;
+
 
     }
   }
