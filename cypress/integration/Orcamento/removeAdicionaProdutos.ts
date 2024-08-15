@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-import 'cypress-wait-until';
-import { ELEMENTS as el } from '../../elements'
+
+import { elements as el } from '../../elements'
 import { dadosParametros } from '../../DadosParametros'
 
 

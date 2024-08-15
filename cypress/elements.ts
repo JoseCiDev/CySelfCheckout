@@ -1,4 +1,4 @@
-export const ELEMENTS = {
+export const elements = {
     avancarProximaTela:'[data-cy="next-step-button"]',
     radiobutton:'input[type="radio"]',
     

@@ -26,7 +26,7 @@
 /// <reference types="Cypress" />
 /// <reference path="./cypress.d.ts" />
 
-import { ELEMENTS as el } from '../elements'
+import { elements as el } from '../elements'
 
 
 

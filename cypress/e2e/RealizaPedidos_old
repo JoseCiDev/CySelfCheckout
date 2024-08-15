@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { ELEMENTS as el } from '../elements';
+import { elements as el } from '../elements';
 import { faker } from '@faker-js/faker';
 import * as fakerBr from 'faker-br';
 import { format } from 'date-fns';

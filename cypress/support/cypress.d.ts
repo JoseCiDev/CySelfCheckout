@@ -2,8 +2,7 @@
 /// <reference types="cypress" />
 
 import { mount } from 'cypress/react'
-// load the 3rd party command definition
-/// <reference types="cypress-wait-until" />
+
 
 
 
