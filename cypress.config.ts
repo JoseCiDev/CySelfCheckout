@@ -10,7 +10,7 @@ export default defineConfig({
     },
     baseUrl: 'http://192.168.0.66:9425',
     supportFile: 'cypress/support/e2e.{js,jsx,ts,tsx}',
-    specPattern: 'cypress/**/*.{js,jsx,ts,tsx}',
+    specPattern: 'cypress/**/*.{js,jsx,ts,tsx,feature}',
     redirectionLimit: 5000,
     viewportHeight: 1280,
     viewportWidth: 1024,
