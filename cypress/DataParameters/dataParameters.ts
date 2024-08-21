@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { fakerBr } from '@js-brasil/fakerbr';
+// import { fakerBr } from '@js-brasil/fakerbr';
 import { format } from 'date-fns/format';
 
 interface DadosParametros {
@@ -123,7 +123,7 @@ const ufsArray = Object.values(Uf) as string[];
 
 export const dadosParametros: DadosParametros = {
 
-    fixtures: require('./fixtures/acessoSelfcheckout.json'),
+    fixtures: require('../fixtures/acessoSelfcheckout.json'),
 
     url: {
         etapaCompletaDadosCliente: 'http://192.168.0.66:9420/etapa-completa-dados',
@@ -145,8 +145,8 @@ export const dadosParametros: DadosParametros = {
         nomeCompleto: faker.person.fullName(),
         dataNascimento: faker.date.birthdate(),
         dataNascimentoFormatada: format(dataNascimento, 'yyyy-MM-dd'),
-        rg: fakerBr.rg(),
-        cpf: fakerBr.cpf(),
+        rg: faker.helpers.arrayElement(['6207536']),
+        cpf: faker.helpers.arrayElement(['08239097510']),
         telefone: faker.phone.number('+48 9 #### ####'), // '+48 9 9214 8670'
         email: faker.internet.email({ provider: 'essentia.com.br', allowSpecialCharacters: true }),
     },

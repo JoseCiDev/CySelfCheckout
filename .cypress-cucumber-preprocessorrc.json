@@ -1,6 +1,0 @@
-{
-    "stepDefinitions": [
-        "cypress/e2e/**/*.ts",
-        "cypress/integration/**/*.ts"
-    ]
-}

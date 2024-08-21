@@ -25,6 +25,8 @@
 
 // import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
 // export { addCucumberPreprocessorPlugin };
+//npm install @badeball/cypress-cucumber-preprocessor
+//npm i -D cypress @bahmutov/cypress-esbuild-preprocessor esbuild
 
 // import webpack from "@cypress/webpack-preprocessor";
 // export { webpack };

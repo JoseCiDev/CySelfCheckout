@@ -1,22 +1,7 @@
 /// <reference types="cypress" />
-
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import { elements as el } from '../elements'
-import { dadosParametros } from '../DadosParametros'
-
-
-// export const acessarSelfcheckout = () => {
-//     const fixtures = dadosParametros.fixtures;
-
-//     fixtures.forEach((fixture, index) => {
-//         it(`Acesso Selfcheckout ${index + 1}`, () => {
-//             cy.log('Etapa de acesso ao Selfcheckout')
-
-//             const index = 0;
-//             cy.login(index, el.containerSenha, el.continuar);
-//         });
-//     });
-// }
-
+import { dadosParametros } from '../DataParameters/dataParameters'
 
 
 describe('Teste de acesso', () => {

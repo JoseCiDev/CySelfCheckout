@@ -11,9 +11,23 @@ export default defineConfig({
   defaultCommandTimeout: 10000,
 
   e2e: {
-    setupNodeEvents(on, config) {
+    async setupNodeEvents(
+      on: Cypress.PluginEvents,
+      config: Cypress.PluginConfigOptions
+    ): Promise<Cypress.PluginConfigOptions> {
+      // Necessário para o preprocessor gerar relatórios JSON após cada execução, entre outras coisas
+      await addCucumberPreprocessorPlugin(on, config);
+
+      on(
+        "file:preprocessor",
+        createBundler({
+          plugins: [createEsbuildPlugin(config)],
+        })
+      );
+
+      return config;
     },
-    baseUrl: 'http://192.168.0.66:9425',
+
     supportFile: 'cypress/support/e2e.{js,jsx,ts,tsx}',
     specPattern: 'cypress/**/*.{js,jsx,ts,tsx,feature}',
     redirectionLimit: 5000,
