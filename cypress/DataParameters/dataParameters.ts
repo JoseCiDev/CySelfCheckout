@@ -1,106 +1,12 @@
 import { faker } from '@faker-js/faker';
 // import { fakerBr } from '@js-brasil/fakerbr';
 import { format } from 'date-fns/format';
+import { DataParameters } from './Interfaces/interface';
+import { Uf } from './Enums/uf';
+import { MotivoRemocaoProduto } from './Enums/motivoRemocaoProduto';
+import { FormaPagamento } from './Enums/formaPagamento';
+import { FormaEnvio } from './Enums/formaEnvio';
 
-interface DadosParametros {
-    fixtures: any;
-    url: {
-        etapaCompletaDadosCliente: string;
-        etapaEndereco: string;
-        etapaResumoPedido: string;
-    };
-    endereco: {
-        cep: string;
-        rua: string;
-        numero: number;
-        cidade: string;
-        estado: string;
-        bairro: string[];
-        complementos: string[];
-    };
-    usuario: {
-        nomeCompleto: string;
-        dataNascimento: Date;
-        dataNascimentoFormatada: string;
-        rg: string;
-        cpf: string;
-        telefone: string;
-        email: string;
-    };
-    ufsArray: string[];
-    randomOptionUf: string;
-    formaPagamento: string;
-
-    pedidoParams: {
-        item: string | undefined;
-        motivoRemocao: MotivoRemocaoProduto;
-        textoMotivoRemocaoOutro: string | undefined;
-        quantidadeEnderecosCadastrados: number;
-        enderecoSelecionado: number;
-        formaEnvio: FormaEnvio;
-        adicionarProduto: boolean;
-    };
-
-    enums: {
-        MotivoRemocaoProduto: typeof MotivoRemocaoProduto;
-        FormaPagamento: typeof FormaPagamento;
-        FormaEnvio: typeof FormaEnvio;
-        Uf: typeof Uf;
-    };
-
-    formaPagamentoOptions: string[];
-}
-
-
-enum MotivoRemocaoProduto {
-    NAO_VOU_UTILIZAR = 0,
-    JA_COMPREI = 1,
-    VALOR = 2,
-    PREFIRO_NAO_INFORMAR = 3,
-    OUTRO = "",
-}
-
-enum FormaPagamento {
-    BOLETO = 'boleto-radio-button',
-    CARTAO = 'cartao-radio-button',
-    PIX = 'pix-radio-button',
-}
-
-enum FormaEnvio {
-    MOTOBOY = "8",
-    RETIRADA_LOJA = "7",
-    SEDEX = "15",
-}
-
-enum Uf {
-    AC = "AC",
-    AL = "AL",
-    AP = "AP",
-    AM = "AM",
-    BA = "BA",
-    CE = "CE",
-    DF = "DF",
-    ES = "ES",
-    GO = "GO",
-    MA = "MA",
-    MT = "MT",
-    MS = "MS",
-    MG = "MG",
-    PA = "PA",
-    PB = "PB",
-    PR = "PR",
-    PE = "PE",
-    PI = "PI",
-    RJ = "RJ",
-    RN = "RN",
-    RS = "RS",
-    RO = "RO",
-    RR = "RR",
-    SC = "SC",
-    SP = "SP",
-    SE = "SE",
-    TO = "TO",
-}
 
 export const getRandomValue = <T>(array: T[]): T => {
     const randomIndex = Math.floor(Math.random() * array.length);
@@ -109,11 +15,11 @@ export const getRandomValue = <T>(array: T[]): T => {
 
 
 const motivoRemocaoOptions: MotivoRemocaoProduto[] = [
-    MotivoRemocaoProduto.NAO_VOU_UTILIZAR,
-    MotivoRemocaoProduto.JA_COMPREI,
-    MotivoRemocaoProduto.VALOR,
-    MotivoRemocaoProduto.PREFIRO_NAO_INFORMAR,
-    MotivoRemocaoProduto.OUTRO,
+    MotivoRemocaoProduto.naoVouUtilizar,
+    MotivoRemocaoProduto.jaComprei,
+    MotivoRemocaoProduto.valor,
+    MotivoRemocaoProduto.prefiroNaoInformar,
+    MotivoRemocaoProduto.outro,
 ];
 
 
@@ -121,7 +27,7 @@ const dataNascimento = faker.date.birthdate();
 const ufsArray = Object.values(Uf) as string[];
 
 
-export const dadosParametros: DadosParametros = {
+export const dataParameters: DataParameters = {
 
     fixtures: require('../fixtures/acessoSelfcheckout.json'),
 
@@ -165,20 +71,20 @@ export const dadosParametros: DadosParametros = {
     },
 
     formaPagamento: getRandomValue([
-        FormaPagamento.BOLETO,
-        FormaPagamento.CARTAO,
-        FormaPagamento.PIX,
+        FormaPagamento.boleto,
+        FormaPagamento.cartao,
+        FormaPagamento.pix,
     ]),
 
     formaPagamentoOptions: [
-        FormaPagamento.BOLETO,
-        FormaPagamento.CARTAO,
-        FormaPagamento.PIX,
+        FormaPagamento.boleto,
+        FormaPagamento.cartao,
+        FormaPagamento.pix,
     ],
 
     pedidoParams: {
         item: '1',
-        motivoRemocao: MotivoRemocaoProduto.JA_COMPREI,
+        motivoRemocao: MotivoRemocaoProduto.jaComprei,
         textoMotivoRemocaoOutro: 'Teste',
         quantidadeEnderecosCadastrados: 0,
         enderecoSelecionado: 0,

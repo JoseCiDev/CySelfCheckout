@@ -31,27 +31,24 @@
 // import webpack from "@cypress/webpack-preprocessor";
 // export { webpack };
 
-// import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-// export { Given, When, Then };
+import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
+export { Given, When, Then };
 
 export { elements } from './elements';
 
-// export {
-//     DataParameters,
-//     CheckAndThrowError,
-//     SearchRecipe,
-//     RecipeImport,
-// } from './DataParameters/Interfaces/interface';
+export {
+    DataParameters,
+    CheckAndThrowError,
+} from './DataParameters/Interfaces/interface';
 
-// export {
-//     ValidationResult,
-//     ElementTypeAndValueOpcional,
-// } from './DataParameters/Types/types';
+export {
+    ValidationResult,
+    ElementTypeAndValueOpcional,
+} from './DataParameters/Types/types';
 
-// export {
-//     dataParameters,
-// } from './DataParameters/dataParameters';
-
+import {
+    dataParameters,
+} from './DataParameters/dataParameters';
 // export {
 //     validateEmail,
 //     validatePassword,
