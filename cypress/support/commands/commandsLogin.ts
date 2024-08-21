@@ -1,16 +1,14 @@
 /// <reference path="../cypress.d.ts" />
 
-import {
-    ElementTypeAndValueOpcional,
-    ValidationResult,
-    ConditionalWrite,
-} from "../../DataParameters/Types/types";
+
 
 import {
     CheckAndThrowError,
     ValidationConfig,
-    
-} from "../../DataParameters/Interfaces/interface";
+    ElementTypeAndValueOpcional,
+    ValidationResult,
+    ConditionalWrite,
+} from '../../import'
 
 
 const environment = Cypress.env('AMBIENTE');

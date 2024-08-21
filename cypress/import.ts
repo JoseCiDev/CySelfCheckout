@@ -1,58 +1,82 @@
 ///home/jose/projetos/CySelfCheckout/cypress/import.tsimport * as loadash from 'lodash';
 
+import { defineConfig } from "cypress";
+
+import { MotivoRemocaoProduto } from './DataParameters/Enums/motivoRemocaoProduto'
+import { FormaPagamento } from './DataParameters/Enums/formaPagamento'
+import { FormaEnvio } from './DataParameters/Enums/formaEnvio'
+import { Uf } from './DataParameters/Enums/uf'
 
 //npm install typescript --save-dev
 
-// import * as lodash from 'lodash';
-// export { lodash };
+import * as lodash from 'lodash';
 //npm i -g npm
 //npm i --save lodash
 
-// import * as dateFns from 'date-fns';
-// export { dateFns };
-// export { format } from 'date-fns';
+import * as dateFns from 'date-fns';
+import { format } from 'date-fns';
 //npm install date-fns --save
 
-// export { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 //npm install @faker-js/faker --save-dev
 
 
-// import { fakerBr } from '@js-brasil/fakerbr';
-// export { fakerBr };
+import { fakerBr } from '@js-brasil/fakerbr';
 //npm i @js-brasil/fakerbr
 
-// export { mount } from 'cypress/react';
-
-// import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
-// export { addCucumberPreprocessorPlugin };
+import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
+import { createEsbuildPlugin } from "@badeball/cypress-cucumber-preprocessor/esbuild";
 //npm install @badeball/cypress-cucumber-preprocessor
+
+import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 //npm i -D cypress @bahmutov/cypress-esbuild-preprocessor esbuild
 
-// import webpack from "@cypress/webpack-preprocessor";
-// export { webpack };
-
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
-export { Given, When, Then };
 
-export { elements } from './elements';
+import { elements } from './elements';
 
-export {
+import {
     DataParameters,
     CheckAndThrowError,
+    ValidationConfig,
 } from './DataParameters/Interfaces/interface';
 
-export {
+import {
     ValidationResult,
     ElementTypeAndValueOpcional,
+    ConditionalWrite,
 } from './DataParameters/Types/types';
 
 import {
     dataParameters,
 } from './DataParameters/dataParameters';
-// export {
+
+// import {
 //     validateEmail,
 //     validatePassword,
 //     checkInput,
 // } from './utils';
 
-// export { Messages } from './messages';
+// import { Messages } from './messages';
+
+
+export {
+    defineConfig,
+    createBundler,
+    createEsbuildPlugin,
+    lodash,
+    dateFns,
+    format,
+    faker,
+    fakerBr,
+    addCucumberPreprocessorPlugin,
+    Given, When, Then,
+    elements,
+    DataParameters,
+    dataParameters,
+    CheckAndThrowError,
+    ValidationResult,
+    ElementTypeAndValueOpcional,
+    ValidationConfig,
+    ConditionalWrite, Uf, FormaEnvio, FormaPagamento, MotivoRemocaoProduto,
+};

@@ -1,8 +1,10 @@
 /// <reference types="cypress" />
-import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import { elements as el } from '../elements'
-import { dadosParametros } from '../DataParameters/dataParameters'
 
+import {
+    dataParameters,
+    elements as el,
+    Given, When, Then
+} from '../import'
 
 describe('Teste de acesso', () => {
     before(() => { });
@@ -11,12 +13,11 @@ describe('Teste de acesso', () => {
 
     });
 
-
     const index = 0;
     it(`Acesso Selfcheckout ${index + 1}`, () => {
         cy.log('teste')
 
-        const fixtures = dadosParametros.fixtures;
+        const fixtures = dataParameters.fixtures;
 
         fixtures.forEach((fixture, index) => {
             cy.log('Etapa de acesso ao Selfcheckout')

@@ -1,12 +1,11 @@
 /// <reference types="cypress" />
 
-import { dataParameters } from '../DataParameters/dataParameters';
 import {
     Given, When, Then,
     elements as el,
-    DataParameters
+    DataParameters,
+    dataParameters
 } from '../import'
-
 
 describe('Teste de acesso', () => {
     before(() => { });
@@ -14,7 +13,6 @@ describe('Teste de acesso', () => {
     beforeEach(() => {
 
     });
-
 
     const index = 0;
     it(`Acesso Selfcheckout ${index + 1}`, () => {

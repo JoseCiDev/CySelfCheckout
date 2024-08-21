@@ -1,7 +1,10 @@
-import { FormaEnvio } from "../Enums/formaEnvio";
-import { FormaPagamento } from "../Enums/formaPagamento";
-import { MotivoRemocaoProduto } from "../Enums/motivoRemocaoProduto";
-import { Uf } from "../Enums/uf";
+
+import {
+    Uf,
+    FormaEnvio,
+    FormaPagamento,
+    MotivoRemocaoProduto,
+} from '../../import';
 
 export interface CheckAndThrowError<S = string> {
     condition: boolean;

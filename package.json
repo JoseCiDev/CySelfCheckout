@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.1.2",
+    "@js-brasil/fakerbr": "^0.0.2",
     "date-fns": "^3.6.0",
     "faker-br": "^0.4.1"
   }

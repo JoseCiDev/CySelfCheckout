@@ -1,7 +1,10 @@
-import { defineConfig } from "cypress";
-import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
-import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
-import { createEsbuildPlugin } from "@badeball/cypress-cucumber-preprocessor/esbuild";
+
+import {
+  defineConfig,
+  createBundler,
+  addCucumberPreprocessorPlugin,
+  createEsbuildPlugin
+} from './cypress/import';
 
 
 
@@ -28,8 +31,21 @@ export default defineConfig({
       return config;
     },
 
-    supportFile: 'cypress/support/e2e.{js,jsx,ts,tsx}',
+    supportFile: 'cypress/support/e2e.ts',
     specPattern: 'cypress/**/*.{js,jsx,ts,tsx,feature}',
+    excludeSpecPattern: [
+      'cypress/support/*',
+      'cypress/support/commands/*',
+      'cypress/elements.ts',
+      'cypress/reports/*',
+      'cypress/reports/html/*',
+      'cypress/reports/html/assets/*',
+      'cypress/reports/.jsons/*',
+      'cypress/DataParameters/Enums/*',
+      'cypress/DataParameters/Interfaces/*',
+      'cypress/DataParameters/**/*',
+      'cypress/import.ts'
+    ],
     redirectionLimit: 5000,
     viewportHeight: 1280,
     viewportWidth: 1024,

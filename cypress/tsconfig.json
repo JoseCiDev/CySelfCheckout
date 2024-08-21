@@ -2,8 +2,8 @@
 {
     "compilerOptions": {
       "esModuleInterop": true,
-      "moduleResolution": "node",
-      "module": "commonjs",
+      "moduleResolution": "Node16",
+      "module": "Node16",
       "resolveJsonModule": true,
       "skipLibCheck": true,
       "target": "es6",

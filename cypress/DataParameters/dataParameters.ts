@@ -1,18 +1,20 @@
-import { faker } from '@faker-js/faker';
-// import { fakerBr } from '@js-brasil/fakerbr';
-import { format } from 'date-fns/format';
-import { DataParameters } from './Interfaces/interface';
-import { Uf } from './Enums/uf';
-import { MotivoRemocaoProduto } from './Enums/motivoRemocaoProduto';
-import { FormaPagamento } from './Enums/formaPagamento';
-import { FormaEnvio } from './Enums/formaEnvio';
+
+import {
+    DataParameters,
+    format,
+    fakerBr,
+    faker,
+    Uf,
+    FormaEnvio,
+    FormaPagamento,
+    MotivoRemocaoProduto,
+} from '../import';
 
 
 export const getRandomValue = <T>(array: T[]): T => {
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex];
 }
-
 
 const motivoRemocaoOptions: MotivoRemocaoProduto[] = [
     MotivoRemocaoProduto.naoVouUtilizar,
@@ -22,10 +24,8 @@ const motivoRemocaoOptions: MotivoRemocaoProduto[] = [
     MotivoRemocaoProduto.outro,
 ];
 
-
 const dataNascimento = faker.date.birthdate();
 const ufsArray = Object.values(Uf) as string[];
-
 
 export const dataParameters: DataParameters = {
 
@@ -59,9 +59,6 @@ export const dataParameters: DataParameters = {
 
     ufsArray: Object.values(Uf),
     randomOptionUf: ufsArray[Math.floor(Math.random() * ufsArray.length)],
-
-
-
 
     enums: {
         MotivoRemocaoProduto,
