@@ -85,7 +85,7 @@ export const dataParameters: DataParameters = {
         textoMotivoRemocaoOutro: 'Teste',
         quantidadeEnderecosCadastrados: 0,
         enderecoSelecionado: 0,
-        formaEnvio: FormaEnvio.MOTOBOY,
+        formaEnvio: FormaEnvio.motoboy,
         adicionarProduto: true,
     },
 

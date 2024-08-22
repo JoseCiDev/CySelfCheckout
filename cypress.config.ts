@@ -31,8 +31,8 @@ export default defineConfig({
       return config;
     },
 
-    supportFile: 'cypress/support/e2e.ts',
-    specPattern: 'cypress/**/*.{js,jsx,ts,tsx,feature}',
+    supportFile: '/home/jose/projetos/CySelfCheckout/cypress/support/e2e.ts',
+    specPattern: '/home/jose/projetos/CySelfCheckout/cypress/e2e/**/*.{js,jsx,ts,tsx,feature}',
     excludeSpecPattern: [
       'cypress/support/*',
       'cypress/support/commands/*',

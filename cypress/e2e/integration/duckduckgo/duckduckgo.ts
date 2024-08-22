@@ -1,6 +1,6 @@
 import {
   Given, When, Then
-} from '../../import';
+} from '../../../import';
 
 When("I visit duckduckgo.com", () => {
   cy.visit("https://www.duckduckgo.com");

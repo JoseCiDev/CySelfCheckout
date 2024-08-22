@@ -1,26 +1,25 @@
-
 {
-    "compilerOptions": {
-      "esModuleInterop": true,
-      "moduleResolution": "Node16",
-      "module": "Node16",
-      "resolveJsonModule": true,
-      "skipLibCheck": true,
-      "target": "es6",
-      "lib": [
-        "es6",
-        "dom"
-      ],
-      "types": [
-        "cypress",
-        "node"
-      ]
-    },
-    "include": [
-      "**/*.ts",
-      "./support/cypress.d.ts",
-      "cypress/**/*.json",
-      "cypress/support/**/*.ts",
-      "cypress/support/**/*.d.ts",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "moduleResolution": "Node16", // ou "nodenext" ou "bundler"
+    "module": "Node16",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "target": "es6",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "types": [
+      "cypress",
+      "node"
     ]
-  }
+  },
+  "include": [
+    "**/*.ts",
+    "./support/cypress.d.ts",
+    "cypress/**/*.json",
+    "cypress/support/**/*.ts",
+    "cypress/support/**/*.d.ts",
+  ]
+}

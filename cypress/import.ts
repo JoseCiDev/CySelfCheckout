@@ -4,7 +4,7 @@ import { defineConfig } from "cypress";
 
 import { MotivoRemocaoProduto } from './DataParameters/Enums/motivoRemocaoProduto'
 import { FormaPagamento } from './DataParameters/Enums/formaPagamento'
-import { FormaEnvio } from './DataParameters/Enums/formaEnvio'
+import { FormaEnvio } from './DataParameters/Enums/shippingMethod'
 import { Uf } from './DataParameters/Enums/uf'
 
 //npm install typescript --save-dev
