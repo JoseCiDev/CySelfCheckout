@@ -1,4 +1,4 @@
-export enum MotivoRemocaoProduto {
+export enum ReasonProductRemoval {
     naoVouUtilizar = 0,
     jaComprei = 1,
     valor = 2,

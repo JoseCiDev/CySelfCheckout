@@ -15,21 +15,21 @@ export function validateEmail(email: string): string | null {
     if (parts[1].indexOf('.') === 0 || parts[1].indexOf('.') === parts[1].length - 1) {
         return `'.' foi usado em uma posição incorreta em '${email}'`;
     }
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!re.test(String(email).toLowerCase())) {
+    const veRule = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!veRule.test(String(email).toLowerCase())) {
         return 'Email com formato inválido';
     }
     return null;
 };
 
 export function validatePassword(password: string): boolean {
-    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@]{8,}$/;
-    return re.test(password);
+    const vpRule = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@]{8,}$/;
+    return vpRule.test(password);
 };
 
 export function checkInput($input, elementError, errorMessage) {
-    const inputValueFromInput = String($input.val());
-    if (inputValueFromInput.length < 1 && !Cypress.$(elementError).is(':visible')) {
+    const input = String($input.val());
+    if (input.length < 1 && !Cypress.$(elementError).is(':visible')) {
         return cy.wrap({error:errorMessage});
     }
 };

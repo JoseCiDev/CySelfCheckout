@@ -15,9 +15,9 @@ declare global {
 
       /**
        * comando customizado para inserir arquivos.
-       * @example cy.inserirArquivo('img/ReceitaJpeg(1).jpeg', el.importarImagem);
+       * @example cy.insertFile('img/ReceitaJpeg(1).jpeg', el.importarImagem);
        */
-      inserirArquivo(fixturePath, elementoBotao): Chainable<unknown>;
+      insertFile(fixturePath, elementoBotao): Chainable<unknown>;
 
       /**
        * comando customizado para selecinar elemento e verificar se esta visivel.
@@ -33,7 +33,7 @@ declare global {
 
       /**
      * comando customizado de login.
-     * @example cy.getElementAndClick(el.elemento)
+     * @example cy.getElementAndType(el.elemento)
     */
       getElementAndType(elements: { [key: string]: string }): ValidationResult
 
@@ -70,7 +70,7 @@ declare global {
 
       /**
       * comando customizado para ler arquivos
-      * @example cy.lerArquivo('orcamentoFilial.json')
+      * @example cy.readFileFromFixture('orcamentoFilial.json')
       */
       readFileFromFixture(fileName: string): ValidationResult;
 
@@ -80,8 +80,11 @@ declare global {
       */
       insertFile(element, filePath): ValidationResult;
 
+      
+
 
     }
+    
   }
 
 }

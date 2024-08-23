@@ -2,9 +2,9 @@
 
 import { defineConfig } from "cypress";
 
-import { MotivoRemocaoProduto } from './DataParameters/Enums/motivoRemocaoProduto'
-import { FormaPagamento } from './DataParameters/Enums/formaPagamento'
-import { FormaEnvio } from './DataParameters/Enums/shippingMethod'
+import { ReasonProductRemoval } from './DataParameters/Enums/reasonProductRemoval'
+import { PaymentMethod } from './DataParameters/Enums/paymentMethod'
+import { ShippingMethod } from './DataParameters/Enums/shippingMethod'
 import { Uf } from './DataParameters/Enums/uf'
 
 //npm install typescript --save-dev
@@ -78,5 +78,9 @@ export {
     ValidationResult,
     ElementTypeAndValueOpcional,
     ValidationConfig,
-    ConditionalWrite, Uf, FormaEnvio, FormaPagamento, MotivoRemocaoProduto,
+    ConditionalWrite,
+    Uf,
+    ShippingMethod,
+    PaymentMethod,
+    ReasonProductRemoval,
 };

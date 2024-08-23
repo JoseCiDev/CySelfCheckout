@@ -18,7 +18,7 @@ const environmentData = Cypress.env(environment);
 Cypress.Commands.add('login', (index: number, element: string, access: string) => {
     cy.fixture('acessoSelfcheckout.json').then((data) => {
         const link = data[index].link;
-        const password = data[index].senha;
+        const password = data[index].password;
 
         cy.visit(link)
 

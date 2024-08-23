@@ -5,9 +5,9 @@ import {
     fakerBr,
     faker,
     Uf,
-    FormaEnvio,
-    FormaPagamento,
-    MotivoRemocaoProduto,
+    ShippingMethod,
+    PaymentMethod,
+    ReasonProductRemoval,
 } from '../import';
 
 
@@ -16,44 +16,44 @@ export const getRandomValue = <T>(array: T[]): T => {
     return array[randomIndex];
 }
 
-const motivoRemocaoOptions: MotivoRemocaoProduto[] = [
-    MotivoRemocaoProduto.naoVouUtilizar,
-    MotivoRemocaoProduto.jaComprei,
-    MotivoRemocaoProduto.valor,
-    MotivoRemocaoProduto.prefiroNaoInformar,
-    MotivoRemocaoProduto.outro,
+const removalReasonOptions: ReasonProductRemoval[] = [
+    ReasonProductRemoval.naoVouUtilizar,
+    ReasonProductRemoval.jaComprei,
+    ReasonProductRemoval.valor,
+    ReasonProductRemoval.prefiroNaoInformar,
+    ReasonProductRemoval.outro,
 ];
 
-const dataNascimento = faker.date.birthdate();
+const birthDate = faker.date.birthdate();
 const ufsArray = Object.values(Uf) as string[];
 
 export const dataParameters: DataParameters = {
 
-    fixtures: require('../fixtures/acessoSelfcheckout.json'),
+    fixtures: import('../fixtures/acessoSelfcheckout.json'),
 
     url: {
-        etapaCompletaDadosCliente: 'http://192.168.0.66:9420/etapa-completa-dados',
-        etapaEndereco: 'http://192.168.0.66:9420/etapa-endereco',
-        etapaResumoPedido: 'http://192.168.0.66:9420/etapa-resumo-pedido',
+        completeStepCustomerData: 'http://192.168.0.66:9420/etapa-completa-dados',
+        addressStep: 'http://192.168.0.66:9420/etapa-endereco',
+        budgetSummaryStep: 'http://192.168.0.66:9420/etapa-resumo-pedido',
     },
 
-    endereco: {
-        cep: faker.helpers.arrayElement(['88134495', '88010000', '88036002', '88058100', '88135298', '88130015', '88130075', '88130050']),
-        rua: faker.location.street(),
-        numero: faker.number.int({ min: 1, max: 9897 }),
-        cidade: faker.location.city(),
-        estado: faker.location.state(),
-        bairro: ['centro', 'Pedra Branda', 'Alvorada', 'Jurerê', 'Boa Vista', 'Bela Vista', 'Morada do Sol', 'Beira Mar', 'Praia Central', 'Jardim Primavera', 'Nova Europa', 'Campos Elísios', 'Morumbi'],
-        complementos: ['fundos', 'casa 2', '2° andar', 'servidao 2'],
+    address: {
+        postalCode: faker.helpers.arrayElement(['88134495', '88010000', '88036002', '88058100', '88135298', '88130015', '88130075', '88130050']),
+        street: faker.location.street(),
+        streetNumber: faker.number.int({ min: 1, max: 9897 }),
+        city: faker.location.city(),
+        state: faker.location.state(),
+        district: ['centro', 'Pedra Branda', 'Alvorada', 'Jurerê', 'Boa Vista', 'Bela Vista', 'Morada do Sol', 'Beira Mar', 'Praia Central', 'Jardim Primavera', 'Nova Europa', 'Campos Elísios', 'Morumbi'],
+        complements: ['fundos', 'casa 2', '2° andar', 'servidao 2'],
     },
 
-    usuario: {
-        nomeCompleto: faker.person.fullName(),
-        dataNascimento: faker.date.birthdate(),
-        dataNascimentoFormatada: format(dataNascimento, 'yyyy-MM-dd'),
+    user: {
+        fullName: faker.person.fullName(),
+        birthDate: faker.date.birthdate(),
+        formattedBirthDate: format(birthDate, 'yyyy-MM-dd'),
         rg: faker.helpers.arrayElement(['6207536']),
         cpf: faker.helpers.arrayElement(['08239097510']),
-        telefone: faker.phone.number('+48 9 #### ####'), // '+48 9 9214 8670'
+        phoneNumber: faker.phone.number('+48 9 #### ####'), // '+48 9 9214 8670'
         email: faker.internet.email({ provider: 'essentia.com.br', allowSpecialCharacters: true }),
     },
 
@@ -61,32 +61,32 @@ export const dataParameters: DataParameters = {
     randomOptionUf: ufsArray[Math.floor(Math.random() * ufsArray.length)],
 
     enums: {
-        MotivoRemocaoProduto,
-        FormaPagamento,
-        FormaEnvio,
+        reasonProductRemoval: ReasonProductRemoval,
+        paymentMethod: PaymentMethod,
+        shippingMethod: ShippingMethod,
         Uf,
     },
 
-    formaPagamento: getRandomValue([
-        FormaPagamento.boleto,
-        FormaPagamento.cartao,
-        FormaPagamento.pix,
+    paymentMethod: getRandomValue([
+        PaymentMethod.boleto,
+        PaymentMethod.cartao,
+        PaymentMethod.pix,
     ]),
 
-    formaPagamentoOptions: [
-        FormaPagamento.boleto,
-        FormaPagamento.cartao,
-        FormaPagamento.pix,
+    paymentMethodOptions: [
+        PaymentMethod.boleto,
+        PaymentMethod.cartao,
+        PaymentMethod.pix,
     ],
 
-    pedidoParams: {
+    budgetParams: {
         item: '1',
-        motivoRemocao: MotivoRemocaoProduto.jaComprei,
-        textoMotivoRemocaoOutro: 'Teste',
-        quantidadeEnderecosCadastrados: 0,
-        enderecoSelecionado: 0,
-        formaEnvio: FormaEnvio.motoboy,
-        adicionarProduto: true,
+        removalReason: ReasonProductRemoval.jaComprei,
+        textReasonForRemovalOther: 'Teste',
+        amountRegisteredAddresses: 0,
+        selectedAddress: 0,
+        shippingMethod: ShippingMethod.motoboy,
+        addProduct: true,
     },
 
 };

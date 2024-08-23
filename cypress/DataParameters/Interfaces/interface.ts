@@ -1,9 +1,9 @@
 
 import {
     Uf,
-    FormaEnvio,
-    FormaPagamento,
-    MotivoRemocaoProduto,
+    ShippingMethod,
+    PaymentMethod,
+    ReasonProductRemoval,
 } from '../../import';
 
 export interface CheckAndThrowError<S = string> {
@@ -22,48 +22,48 @@ export interface ValidationConfig {
 export interface DataParameters {
     fixtures: any;
     url: {
-        etapaCompletaDadosCliente: string;
-        etapaEndereco: string;
-        etapaResumoPedido: string;
+        completeStepCustomerData: string;
+        addressStep: string;
+        budgetSummaryStep: string;
     };
-    endereco: {
-        cep: string;
-        rua: string;
-        numero: number;
-        cidade: string;
-        estado: string;
-        bairro: string[];
-        complementos: string[];
+    address: {
+        postalCode: string;
+        street: string;
+        streetNumber: number;
+        city: string;
+        state: string;
+        district: string[];
+        complements: string[];
     };
-    usuario: {
-        nomeCompleto: string;
-        dataNascimento: Date;
-        dataNascimentoFormatada: string;
+    user: {
+        fullName: string;
+        birthDate: Date;
+        formattedBirthDate: string;
         rg: string;
         cpf: string;
-        telefone: string;
+        phoneNumber: string;
         email: string;
     };
     ufsArray: string[];
     randomOptionUf: string;
-    formaPagamento: string;
+    paymentMethod: string;
 
-    pedidoParams: {
+    budgetParams: {
         item: string | undefined;
-        motivoRemocao: MotivoRemocaoProduto;
-        textoMotivoRemocaoOutro: string | undefined;
-        quantidadeEnderecosCadastrados: number;
-        enderecoSelecionado: number;
-        formaEnvio: FormaEnvio;
-        adicionarProduto: boolean;
+        removalReason: ReasonProductRemoval;
+        textReasonForRemovalOther: string | undefined;
+        amountRegisteredAddresses: number;
+        selectedAddress: number;
+        shippingMethod: ShippingMethod;
+        addProduct: boolean;
     };
 
     enums: {
-        MotivoRemocaoProduto: typeof MotivoRemocaoProduto;
-        FormaPagamento: typeof FormaPagamento;
-        FormaEnvio: typeof FormaEnvio;
+        reasonProductRemoval: typeof ReasonProductRemoval;
+        paymentMethod: typeof PaymentMethod;
+        shippingMethod: typeof ShippingMethod;
         Uf: typeof Uf;
     };
 
-    formaPagamentoOptions: string[];
+    paymentMethodOptions: string[];
 }

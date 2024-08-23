@@ -18,7 +18,6 @@ export default defineConfig({
       on: Cypress.PluginEvents,
       config: Cypress.PluginConfigOptions
     ): Promise<Cypress.PluginConfigOptions> {
-      // Necessário para o preprocessor gerar relatórios JSON após cada execução, entre outras coisas
       await addCucumberPreprocessorPlugin(on, config);
 
       on(
@@ -31,8 +30,11 @@ export default defineConfig({
       return config;
     },
 
-    supportFile: '/home/jose/projetos/CySelfCheckout/cypress/support/e2e.ts',
-    specPattern: '/home/jose/projetos/CySelfCheckout/cypress/e2e/**/*.{js,jsx,ts,tsx,feature}',
+    supportFile: 'cypress/support/e2e.ts',
+    specPattern: [
+      'cypress/e2e/**/*.{js,jsx,ts,tsx,feature}',
+      'cypress/integration/**/*.{js,jsx,ts,tsx,feature}'
+    ],
     excludeSpecPattern: [
       'cypress/support/*',
       'cypress/support/commands/*',
@@ -50,5 +52,5 @@ export default defineConfig({
     viewportHeight: 1280,
     viewportWidth: 1024,
     numTestsKeptInMemory: 150
-  },
+  }
 });
