@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npx cypress open",
-    "cloud": "npx cypress run --record --key 2543332a-9315-408d-909f-43e17b8411c3"
+    "cloud": "npx cypress run --record --key 2543332a-9315-408d-909f-43e17b8411c3",
+    "e2e": "cypress run --browser electron --record --key 2543332a-9315-408d-909f-43e17b8411c3 --headless --spec \"cypress/e2e/*.feature\""
   },
   "author": "",
   "license": "ISC",
