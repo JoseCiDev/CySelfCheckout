@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npx cypress open",
     "cloud": "npx cypress run --record --key 2543332a-9315-408d-909f-43e17b8411c3",
-    "e2e": "cypress run --browser chrome --headless --spec \"cypress/e2e/*.feature\""
+    "e2e": "cypress run --browser electron --headless --spec \"cypress/e2e/*.feature\""
   },
   "author": "",
   "license": "ISC",
